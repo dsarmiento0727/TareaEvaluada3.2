@@ -10,36 +10,25 @@
 
         <ui:composition template="./plantilla.xhtml">
 
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
-            <ui:define name="right">
-                right
-            </ui:define>
-
+           
             <ui:define name="content">
-                <h1>Gestionar clientes</h1>
-
-                <h:panelGrid columns="2" columnClasses="alinder, alinizq,alinizq">
-
+                <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
                     <h:form id="frmCliente">
                         <p:growl id="msj" showDetail="true"  />
-                        <p:outputLabel value="Nombre"/>
-                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}"/>
-                        <br></br>
-                        <p:outputLabel value="Genero"/>
+
+
+                        <p:outputLabel for="txtNombre" value="Nombre" />
+                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}" />
+
+                        <p:outputLabel value="Genero" />
                         <p:selectOneRadio value="#{beanCliente.cli.genero}">
-                            <f:selectItem itemLabel="Masculino" itemValue="masculino"/>
-                            <f:selectItem itemLabel="Femenino" itemValue="femenino"/>
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                            <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
                         </p:selectOneRadio>
 
                         <h:panelGroup>
-                            <p:commandButton value="Insertar"  actionListener="#{beanCliente.insertar()}" update="@form" />
+                             <p:commandButton value="Insertar"  actionListener="#{beanCliente.insertar()}" update="@form" />
+                             <p:commandButton value="Modificar"  actionListener="#{beanCliente.modificar()}" update="@form" />
                            
                             <p:commandButton value="Limpiar" actionListener="#{beanCliente.limpiar()}" update="@form" />
                         </h:panelGroup>
@@ -49,12 +38,10 @@
                                      selection="#{beanCliente.selCli}"
                                      selectionMode="single"
                                      rowKey="#{cliente.codigoCliente}"
-                                     paginator="true"
-                                     rows="5"
                                      >
 
 
-                            <p:ajax update="@form" event="rowSelect" listener="#{beanCliente.select()}" process="tblCliente"/>
+                            <p:ajax update="@form"  event="rowSelect" listener="#{beanCliente.select()}" process="tblCliente"/>
                             <p:column headerText="Nombre"> 
                                 <h:outputLabel value="#{cliente.nombre}" />
                             </p:column>
@@ -64,16 +51,10 @@
 
 
                         </p:dataTable>
-
-
                     </h:form>
-
                 </h:panelGrid>
             </ui:define>
 
-            <ui:define name="bottom">
-                bottom
-            </ui:define>
 
         </ui:composition>
 
