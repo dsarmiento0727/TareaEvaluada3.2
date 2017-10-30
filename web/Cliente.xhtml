@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./plantilla.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="right">
+                right
+            </ui:define>
+
+            <ui:define name="content">
+                <h1>Gestionar clientes</h1>
+
+                <h:panelGrid columns="2" columnClasses="alinder, alinizq,alinizq">
+
+                    <h:form id="frmCliente">
+                        <p:growl id="msj" showDetail="true"  />
+                        <p:outputLabel value="Nombre"/>
+                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}"/>
+                        <br></br>
+                        <p:outputLabel value="Genero"/>
+                        <p:selectOneRadio value="#{beanCliente.cli.genero}">
+                            <f:selectItem itemLabel="Masculino" itemValue="masculino"/>
+                            <f:selectItem itemLabel="Femenino" itemValue="femenino"/>
+                        </p:selectOneRadio>
+
+                        <h:panelGroup>
+                            <p:commandButton value="Insertar"  actionListener="#{beanCliente.insertar()}" update="@form" />
+                           
+                            <p:commandButton value="Limpiar" actionListener="#{beanCliente.limpiar()}" update="@form" />
+                        </h:panelGroup>
+
+                        <p:dataTable id="tblCliente" value="#{beanCliente.lista}"
+                                     var="cliente"
+                                     selection="#{beanCliente.selCli}"
+                                     selectionMode="single"
+                                     rowKey="#{cliente.codigoCliente}"
+                                     paginator="true"
+                                     rows="5"
+                                     >
+
+
+                            <p:ajax update="@form" event="rowSelect" listener="#{beanCliente.select()}" process="tblCliente"/>
+                            <p:column headerText="Nombre"> 
+                                <h:outputLabel value="#{cliente.nombre}" />
+                            </p:column>
+                            <p:column headerText="Genero">
+                                <h:outputLabel value="#{cliente.genero}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+
+
+                    </h:form>
+
+                </h:panelGrid>
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
