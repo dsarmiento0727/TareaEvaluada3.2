@@ -22,7 +22,7 @@ public class Conexion {
     public void conectar() throws Exception{
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crudjsf?user=root&password=root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/crudjsf?user=root&password=karen22");
         } catch (Exception e) {
             System.out.println("Error en Clase Conexion");
             throw e;
