@@ -8,7 +8,7 @@
     <body>
 
         <ui:composition template="./plantilla.xhtml">
-            
+
             <ui:define name="content">
                 <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
                     <h:form id="frmDepa">
@@ -28,11 +28,11 @@
                         <br/><br/>
                         <p:dataTable id="tblDepa" value="#{beanDepartamento.lista}"
                                      var="departamento"
-                                     selection="#{beanDepartamento.selDepa}"
+                                     selection="#{beanDepartamento.selDepto}"
                                      selectionMode="single"
                                      rowKey="#{departamento.codigoDepartamento}"
-                            >
-                        <p:ajax update="@form"  event="rowSelect" listener="#{beanDepartamento.select()}" process="tblDepa"/>
+                                     >
+                            <p:ajax update="@form"  event="rowSelect" listener="#{beanDepartamento.select()}" process="tblDepa"/>
                             <p:column headerText="Nombre"> 
                                 <h:outputLabel value="#{departamento.nombre}" />
                             </p:column>
@@ -41,10 +41,10 @@
                             </p:column>
                         </p:dataTable>
                         <p:dialog header="Confirmacion" widgetVar="modificar" modal="true" height="100">
-                             <h:outputText value="Esta seguro que desea modificar?"/>
-                             <br></br>
-                             <p:commandButton value="Si" actionListener="#{beanDepartamento.modificar()}" update="@form"/>
-                             <p:commandButton value="No" onclick="PF('modificar').hide();" />
+                            <h:outputText value="Esta seguro que desea modificar?"/>
+                            <br></br>
+                            <p:commandButton value="Si" actionListener="#{beanDepartamento.modificar()}" update="@form"/>
+                            <p:commandButton value="No" onclick="PF('modificar').hide();" />
                         </p:dialog>
                         <p:dialog header="Confirmacion" widgetVar="eliminar" modal="true" height="100">
                             <h:outputText value="Esta seguro que desea eliminar?" />
@@ -52,12 +52,12 @@
                             <p:commandButton value="Si" actionListener="#{beanDepartamento.eliminar()}" update="@form"/>
                             <p:commandButton value="No" onclick="PF('eliminar').hide();" />
                         </p:dialog>
-                        
+
                     </h:form>
                 </h:panelGrid>
             </ui:define>
 
-          
+
 
         </ui:composition>
 
