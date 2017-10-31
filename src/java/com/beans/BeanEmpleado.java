@@ -7,6 +7,7 @@ package com.beans;
 
 import com.dao.DaoEmpleado;
 import com.modelo.Empleado;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
@@ -20,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "beanEmpleado")
 @Dependent
-public class BeanEmpleado {
+public class BeanEmpleado implements Serializable{
     private DaoEmpleado de= new DaoEmpleado();
     private Empleado em= new Empleado();
     private Empleado selEm= new Empleado();

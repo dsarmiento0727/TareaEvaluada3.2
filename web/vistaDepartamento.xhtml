@@ -8,19 +8,7 @@
     <body>
 
         <ui:composition template="./plantilla.xhtml">
-
-            <ui:define name="top">
-                top
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
-            <ui:define name="right">
-                right
-            </ui:define>
-
+            
             <ui:define name="content">
                 <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
                     <h:form id="frmDepa">
@@ -29,7 +17,7 @@
                         <p:inputText id="txtNombre" value="#{beanDepartamento.d.nombre}" required="true" requiredMessage="Ingrese el Nombre del departamento" />
                         <br/><br/>
                         <p:outputLabel for="txtCanti" value="Cantidad de Empleados"/>
-                        <p:spinner id="txtCanti" value="#{beanDepartamento.d.cantidadEmpleados}" required="true" requiredMessage="Ingrese la cantidad de empleado"/>
+                        <p:spinner id="txtCanti" value="#{beanDepartamento.d.nombre}" required="true" requiredMessage="Ingrese la cantidad de empleado"/>
                         <br/><br/>
                         <h:panelGroup>
                             <p:commandButton value="Insertar" actionListener="#{beanDepartamento.insertar()}" update="@form"/>
@@ -64,13 +52,12 @@
                             <p:commandButton value="Si" actionListener="#{beanDepartamento.eliminar()}" update="@form"/>
                             <p:commandButton value="No" onclick="PF('eliminar').hide();" />
                         </p:dialog>
+                        
                     </h:form>
                 </h:panelGrid>
             </ui:define>
 
-            <ui:define name="bottom">
-                bottom
-            </ui:define>
+          
 
         </ui:composition>
 
