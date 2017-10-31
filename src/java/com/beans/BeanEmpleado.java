@@ -99,7 +99,7 @@ public class BeanEmpleado implements Serializable{
         try {
             de.eliminarEmpleado(em);
             FacesContext context= FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Departamento Eliminado Correctamente"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Empleado Eliminado Correctamente"));
             lista=de.listarEmpleados();
             limpiar();
         } catch (Exception e) {

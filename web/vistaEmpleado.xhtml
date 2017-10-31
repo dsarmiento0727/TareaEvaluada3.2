@@ -19,7 +19,7 @@
                         <p:outputLabel value="nombre" for="txtNombre"/>
                         <p:inputText value="#{beanEmpleado.em.nombre}" id="txtNombre" required="true" requiredMessage="Ingrese el Nombre"/>
                         <p:outputLabel value="Genero" />
-                        <p:selectOneRadio value="#{beanCliente.cli.genero}">
+                        <p:selectOneRadio value="#{beanEmpleado.em.genero}">
                             <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
                             <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
                         </p:selectOneRadio>
@@ -30,6 +30,10 @@
                         <f:selectItem itemValue="TV" itemLabel="TV"/>
                         <f:selectItem itemValue="Informatica" itemLabel="Informatica"/>
                         </p:selectManyCheckbox>
+                        <p:outputLabel for="txtEdad" value="Edad"/>
+                        <p:spinner id="txtEdad" value="#{beanEmpleado.em.edad}" required="true" requiredMessage="Ingrese la edad del empleado"/>
+                        <p:outputLabel for="txtDireccion" value="Direccion"/>
+                        <p:inputTextarea rows="2" cols="15"/>
                     </h:form>
                 </h:panelGrid>
             </ui:define>
