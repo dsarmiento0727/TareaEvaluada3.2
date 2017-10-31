@@ -6,7 +6,6 @@
 
 package com.beans;
 
-import com.dao.DaoCliente;
 import com.dao.DaoDepartamento;
 import com.modelo.Departamento;
 import java.util.ArrayList;

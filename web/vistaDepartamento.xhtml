@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
@@ -20,7 +22,50 @@
             </ui:define>
 
             <ui:define name="content">
-                content
+                <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
+                    <h:form id="frmDepa">
+                        <p:growl id="msj" showDetail="true"/>
+                        <p:outputLabel for="txtNombre" value="Nombre" />
+                        <p:inputText id="txtNombre" value="#{beanDepartamento.d.nombre}" required="true" requiredMessage="Ingrese el Nombre del departamento" />
+                        <br/><br/>
+                        <p:outputLabel for="txtCanti" value="Cantidad de Empleados"/>
+                        <p:spinner id="txtCanti" value="#{beanDepartamento.d.cantidadEmpleados}" required="true" requiredMessage="Ingrese la cantidad de empleado"/>
+                        <br/><br/>
+                        <h:panelGroup>
+                            <p:commandButton value="Insertar" actionListener="#{beanDepartamento.insertar()}" update="@form"/>
+                            <p:commandButton value="Modificar" onclick="PF('modificar').show();" type="button"/>
+                            <p:commandButton value="Eliminar" onclick="PF('eliminar').show();" type="button"/>
+                            <p:commandButton value="Limpiar" actionListener="#{beanDepartamento.limpiar()}" update="@form"/>
+                        </h:panelGroup>
+                        <br/><br/>
+                        <p:dataTable id="tblDepa" value="#{beanDepartamento.lista}"
+                                     var="departamento"
+                                     selection="#{beanDepartamento.setD(d)}"
+                                     selectionMode="single"
+                                     rowKey="#{departamento.codigoDepartamento}"
+                            >
+                        <p:ajax update="@form"  event="rowSelect" listener="#{beanDepartamento.select()}" process="tblDepa"/>
+                            <p:column headerText="Nombre"> 
+                                <h:outputLabel value="#{departamento.nombre}" />
+                            </p:column>
+                            <p:column headerText="Cantidad de Empleados">
+                                <h:outputLabel value="#{departamento.cantidadEmpleados}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <p:dialog header="Confirmacion" widgetVar="modificar" modal="true" height="100">
+                             <h:outputText value="Esta seguro que desea modificar?"/>
+                             <br></br>
+                             <p:commandButton value="Si" actionListener="#{beanDepartamento.modificar()}" update="@form"/>
+                             <p:commandButton value="No" onclick="PF('modificar').hide();" />
+                        </p:dialog>
+                        <p:dialog header="Confirmacion" widgetVar="eliminar" modal="true" height="100">
+                            <h:outputText value="Esta seguro que desea eliminar?" />
+                            <br></br>
+                            <p:commandButton value="Si" actionListener="#{beanDepartamento.eliminar()}" update="@form"/>
+                            <p:commandButton value="No" onclick="PF('eliminar').hide();" />
+                        </p:dialog>
+                    </h:form>
+                </h:panelGrid>
             </ui:define>
 
             <ui:define name="bottom">
