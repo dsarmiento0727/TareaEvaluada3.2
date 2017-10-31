@@ -68,12 +68,37 @@ public class BeanDepartamento {
         try {
             ddp.registrarDepartamento(d);
             FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestion", "Cliente Ingresado Correctamente"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestion", "Departamento Ingresado Correctamente"));
             lista=ddp.listarDepartamentos();
             limpiar();
         } catch (Exception e) {
             FacesContext context =FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",e.toString()));
+            throw e;
+        }
+    }
+    public void modificar() throws Exception{
+        try {
+            ddp.modificarDepartamento(d);
+            FacesContext context=FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Departamento Modificado Correctamente"));
+            lista=ddp.listarDepartamentos();
+            limpiar();
+        } catch (Exception e) {
+            FacesContext context=FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",e.toString()));
+            throw e;
+        }
+    }
+    
+    public void eliminar() throws Exception{
+        try {
+            ddp.eliminarDepartamento(d);
+            FacesContext context= FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Departamento Eliminado Correctamente"));
+        } catch (Exception e) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
             throw e;
         }
     }
