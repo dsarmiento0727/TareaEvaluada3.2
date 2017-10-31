@@ -7,8 +7,14 @@
 package com.beans;
 
 import com.dao.DaoCliente;
-import javax.inject.Named;
+import com.dao.DaoDepartamento;
+import com.modelo.Departamento;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 
 /**
@@ -18,9 +24,57 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 @Named(value = "beanDepartamento")
 public class BeanDepartamento {
-
+    private DaoDepartamento ddp= new DaoDepartamento();
+    private Departamento d= new Departamento();
+    private Departamento selDepa = new Departamento();
+    private List<Departamento> lista = new ArrayList<>();
    
-    public BeanDepartamento() {
+    public DaoDepartamento getDdp() {
+        return ddp;
     }
-    
+
+    public void setDdp(DaoDepartamento ddp) {
+        this.ddp = ddp;
+    }
+
+    public Departamento getD() {
+        return d;
+    }
+
+    public void setD(Departamento d) {
+        this.d = d;
+    }
+
+    public List<Departamento> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Departamento> lista) {
+        this.lista = lista;
+    }
+   
+    public BeanDepartamento()throws Exception{
+        lista=ddp.listarDepartamentos();
+    }
+    public void select()
+    {
+        d = selDepa;
+    }
+    public void limpiar(){
+     selDepa = new Departamento();
+     d = new Departamento();
+     }
+    public void insertar() throws Exception{
+        try {
+            ddp.registrarDepartamento(d);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestion", "Cliente Ingresado Correctamente"));
+            lista=ddp.listarDepartamentos();
+            limpiar();
+        } catch (Exception e) {
+            FacesContext context =FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",e.toString()));
+            throw e;
+        }
+    }
 }
