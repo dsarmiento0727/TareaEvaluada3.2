@@ -18,7 +18,7 @@
 
 
                         <p:outputLabel for="txtNombre" value="Nombre" />
-                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}" />
+                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}" required="true" requiredMessage="Ingrese Nombre" />
 
                         <p:outputLabel value="Genero" />
                         <p:selectOneRadio value="#{beanCliente.cli.genero}">
@@ -29,7 +29,7 @@
                         <h:panelGroup>
                              <p:commandButton value="Insertar"  actionListener="#{beanCliente.insertar()}" update="@form" />
                              <p:commandButton value="Modificar"  onclick="PF('modificar').show();" type="button" />
-                             <p:commandButton value="Eliminar" onclick="PF('eliminar').show();" type="button"
+                             <p:commandButton value="Eliminar" onclick="PF('eliminar').show();" type="button"/>
                            
                             <p:commandButton value="Limpiar" actionListener="#{beanCliente.limpiar()}" update="@form" />
                         </h:panelGroup>
@@ -53,7 +53,18 @@
 
                         </p:dataTable>
                         
-                        <p:dialog header="Confirmacion"
+                        <p:dialog header="Confirmacion" widgetVar="modificar" modal="true" height="100">
+                             <h:outputText value="Esta seguro que desea modificar?"/>
+                             <br></br>
+                             <p:commandButton value="Si" actionListener="#{beanCliente.modificar()}" update="@form"/>
+                             <p:commandButton value="No" onclick="PF('modificar').hide();" />
+                        </p:dialog>
+                        <p:dialog header="Confirmacion" widgetVar="eliminar" modal="true" height="100">
+                            <h:outputText value="Esta seguro que desea eliminar?" />
+                            <br></br>
+                            <p:commandButton value="Si" actionListener="#{beanCliente.eliminar()}" update="@form"/>
+                            <p:commandButton value="No" onclick="PF('eliminar').hide();" />
+                        </p:dialog>
                     </h:form>
                 </h:panelGrid>
             </ui:define>

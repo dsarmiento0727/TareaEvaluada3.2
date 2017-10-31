@@ -59,7 +59,7 @@ public class BeanCliente implements Serializable {
     public void setLista(List<Cliente> lista) {
         this.lista = lista;
     }
-    
+
     /**
      * Creates a new instance of BeanCliente
      */
@@ -67,10 +67,11 @@ public class BeanCliente implements Serializable {
 
         lista = dc.mostrarCliente();
     }
-    public void select()
-    {
+
+    public void select() {
         cli = selCli;
     }
+
     public void insertar() throws Exception {
         try {
             dc.registrarCliente(cli);
@@ -84,33 +85,37 @@ public class BeanCliente implements Serializable {
             throw e;
         }
     }
-    
-    public void modificar() throws Exception
-    {
+
+    public void modificar() throws Exception {
         try {
             dc.modificarCliente(selCli);
-            FacesContext context= FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Cliente Modificado Correctamente"));
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestion", "Cliente Modificado Correctamente"));
+            lista = dc.mostrarCliente();
+            limpiar();
         } catch (Exception e) {
-             FacesContext context = FacesContext.getCurrentInstance();
+            FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
             throw e;
         }
     }
-     public void eliminar() throws Exception
-    {
+
+    public void eliminar() throws Exception {
         try {
             dc.eliminarCliente(selCli);
-            FacesContext context= FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Cliente Eliminado Correctamente"));
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestion", "Cliente Eliminado Correctamente"));
+            lista = dc.mostrarCliente();
+            limpiar();
         } catch (Exception e) {
-             FacesContext context = FacesContext.getCurrentInstance();
+            FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
             throw e;
         }
     }
-    public void limpiar(){
-     selCli = new Cliente();
-     cli = new Cliente();
-     }
+
+    public void limpiar() {
+        selCli = new Cliente();
+        cli = new Cliente();
+    }
 }
