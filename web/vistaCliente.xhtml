@@ -1,4 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Nombre de la Pagina: vistaCliente
+Fecha: 30/10/2017
+Version: 1.0
+CopyRight: ITCA FEPADE
+Autor: David Sarmiento
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -12,14 +19,14 @@
 
            
             <ui:define name="content">
-                <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
+                <h:panelGrid columns="2" columnClasses="">
                     <h:form id="frmCliente">
                         <p:growl id="msj" showDetail="true"  />
 
 
                         <p:outputLabel for="txtNombre" value="Nombre" />
-                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}" required="true" requiredMessage="Ingrese Nombre" />
-
+                        <p:inputText id="txtNombre" value="#{beanCliente.cli.nombre}"/>
+                           <br/>
                         <p:outputLabel value="Genero" />
                         <p:selectOneRadio value="#{beanCliente.cli.genero}">
                             <f:selectItem itemLabel="Masculino" itemValue="Masculino" />

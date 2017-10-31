@@ -1,4 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
+<!--
+Nombre de la Pagina: plantilla
+Fecha: 30/10/2017
+Version: 1.0
+CopyRight: ITCA FEPADE
+Autor: David Sarmiento
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -7,68 +14,43 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="/css/bootstrap.min.css" />
+
         <h:outputStylesheet name="/css/default.css"/>
         <h:outputStylesheet name="/css/cssLayout.css"/>
-        
-        <title>Plantilla</title>
+
     </h:head>
 
     <h:body>
 
         <div id="top">
             <ui:insert name="top">
-                <nav class="navbar navbar-expand-lg navbar-grey bg-grey">
 
-            <a class="navbar-brand" href="#">
                 <p:graphicImage name="/images/primeng_solidBlack.png" width="100" height="50" class="d-inline-block align-top" alt="" />
                 ITCA FEPADE
-            </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav mr-auto">    
-                </ul>
-
-
-
-                <ul class="navbar-nav mr-right">  
-                </ul>
-          
-                
-
-            </div>
-
-        </nav>
             </ui:insert>
         </div>
         <div>
-            
+
             <div id="left">
                 <ui:insert name="left">
                     <h:form>
-                    <p:menu>
-                        <p:submenu label="Menu">
-                            <p:menuitem value="Inicio" outcome="index"/>
-                            <p:menuitem value="Cliente" outcome="vistaCliente" />
-                            <p:menuitem value="Empleado" outcome="vistaEmpleado" />
-                            <p:menuitem value="Departamento" outcome="vistaDepartamento" />
+                        <p:menu>
+                            <p:submenu label="Menu">
+                                <p:menuitem value="Inicio" outcome="index"/>
+                                <p:menuitem value="Cliente" outcome="vistaCliente" />
+                                <p:menuitem value="Empleado" outcome="vistaEmpleado" />
+                                <p:menuitem value="Departamento" outcome="vistaDepartamento" />
 
-                        </p:submenu>
+                            </p:submenu>
 
-                    </p:menu>
+                        </p:menu>
                     </h:form>
-                    </ui:insert>
-                   
-               
+                </ui:insert>
+
+
             </div>
-         
+
             <div>
                 <div id="right">
                     <ui:insert name="right">Right</ui:insert>
@@ -82,13 +64,13 @@
         </div>
         <div id="bottom">
             <ui:insert name="bottom">
-                  <center>
+                <center>
                     ITCA-FEPADE SIS13 A
                 </center>
                 INTEGRANTES:
                 <center>
                     Escobar Linares, Karen Patricia 087715<br/>
-                    
+
                     Sarmiento Hernandez,David Alexander 223615
                 </center>
             </ui:insert>
