@@ -18,11 +18,13 @@
                         
                         <p:outputLabel value="nombre" for="txtNombre"/>
                         <p:inputText value="#{beanEmpleado.em.nombre}" id="txtNombre" required="true" requiredMessage="Ingrese el Nombre"/>
+                        <br/><br/>
                         <p:outputLabel value="Genero" />
                         <p:selectOneRadio value="#{beanEmpleado.em.genero}">
                             <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
                             <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
                         </p:selectOneRadio>
+                        <br/><br/>
                         <p:outputLabel value="Intereses"/>
                         <p:selectManyCheckbox value="#{beanEmpleado.em.intereses}">
                         <f:selectItem itemValue="Leer" itemLabel="Leer"/>
@@ -30,10 +32,44 @@
                         <f:selectItem itemValue="TV" itemLabel="TV"/>
                         <f:selectItem itemValue="Informatica" itemLabel="Informatica"/>
                         </p:selectManyCheckbox>
+                        <br/><br/>
                         <p:outputLabel for="txtEdad" value="Edad"/>
                         <p:spinner id="txtEdad" value="#{beanEmpleado.em.edad}" required="true" requiredMessage="Ingrese la edad del empleado"/>
+                        <br/><br/>
                         <p:outputLabel for="txtDireccion" value="Direccion"/>
                         <p:inputTextarea id="txtDireccion" rows="2" cols="15"/>
+                        <br/><br/>
+                        <p:selectOneMenu value="#{beanEmpleado.em.cargo}">
+                            <f:selectItem itemValue="Gerente" itemLabel="Gerente"/>
+                            <f:selectItem itemValue="Contador" itemLabel="Contador"/>
+                        </p:selectOneMenu>
+                        
+                        <p:dataTable id="tblEmp" value="#{beanEmpleado.lista}" var="empleado" selection="#{beanEmpleado.selEm}" selectionMode="single" rowKey="#{empleado.codigoEmpleado}">
+                            <p:ajax event="rowSelect" listener="#{beanEmpleado.select()}" process="tblEmp"/>
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{empleado.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Genero">
+                                <p:outputLabel value="#{empleado.genero}"/>
+                            </p:column>
+                            <p:column headerText="Intereses">
+                                <p:dataTable value="#{empleado.intereses}" var="v">
+                                     <p:outputLabel value="#{v}"/>   
+                                </p:dataTable>
+                            </p:column>
+                            <p:column headerText="Edad">
+                                <p:outputLabel value="#{empleado.edad}"/>
+                            </p:column>
+                            <p:column headerText="Direccion">
+                                <p:outputLabel value="#{empleado.direccion}"/>
+                            </p:column>
+                            <p:column headerText="Cargo">
+                                <p:outputLabel value="#{empleado.cargo}"/>
+                            </p:column>
+                            <p:column headerText="Codigo Departamento">
+                                <p:outputLabel value="#{empleado.codigoDepartamento}"/>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
                 </h:panelGrid>
             </ui:define>

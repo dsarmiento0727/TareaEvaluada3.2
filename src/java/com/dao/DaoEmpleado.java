@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.conexion.Conexion;
+import com.modelo.Departamento;
 import com.modelo.Empleado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -123,5 +124,29 @@ public class DaoEmpleado extends Conexion{
         this.desconectar();
         }
         return emp;
+    }
+      
+          public List<Departamento> listarDepartamentos() throws Exception{
+        ResultSet res;
+        List<Departamento> lista; 
+        try {
+            this.conectar();
+            String sql="select * from departamento";
+            PreparedStatement pre=this.getCon().prepareCall(sql);
+            res=pre.executeQuery();
+            lista = new ArrayList();
+            while (res.next()) {                
+                Departamento d= new Departamento();
+                d.setCodigoDepartamento(res.getInt("codigoDepartamento"));
+                d.setNombre(res.getString("nombre"));
+                d.setCantidadEmpleados(res.getInt("cantidadEmpleado"));
+                lista.add(d);
+            }
+        } catch (Exception e) {
+            throw e;
+        }finally{
+        this.desconectar();
+        }
+        return lista;
     }
 }

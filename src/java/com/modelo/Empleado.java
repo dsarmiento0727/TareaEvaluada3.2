@@ -9,7 +9,7 @@ package com.modelo;
  *
  * @author David Sarmiento
  */
-public class Empleado {
+public class Empleado{
     private int codigoEmpleado;
     private String nombre;
     private String genero;
@@ -18,9 +18,6 @@ public class Empleado {
     private String direccion;
     private String cargo;
     private int codigoDepartamento;
-
-    public Empleado() {
-    }
 
     public Empleado(int codigoEmpleado, String nombre, String genero, String[] intereses, int edad, String direccion, String cargo, int codigoDepartamento) {
         this.codigoEmpleado = codigoEmpleado;
@@ -97,6 +94,10 @@ public class Empleado {
         this.codigoDepartamento = codigoDepartamento;
     }
     
+    
+    public Empleado() {
+    }
+
      public String convertirIntereses(String[] intereses) {
         String interesesC = null;
         for (int i = 0; i < intereses.length; i++) {
@@ -110,19 +111,23 @@ public class Empleado {
     }
 
     public String[] obtenerIntereses(String intereses) {
-        String[] interesesBase = null;
+        String[] interesesAux = null;
+        String[] interesesBase = new String[4];
 
         if (intereses.equals("leer")) {
             interesesBase[1] = "leer";
+            interesesAux = interesesBase;
         }
         if (intereses.equals("leer,dormir")) {
             interesesBase[1] = "leer";
             interesesBase[2] = "dormir";
+            interesesAux = interesesBase;
         }
         if (intereses.equals("leer,dormir,cantar")) {
             interesesBase[1] = "leer";
             interesesBase[2] = "dormir";
             interesesBase[3] = "cantar";
+            interesesAux = interesesBase;
         }
 
         if (interesesBase.equals("leer,dormir,cantar,jugar")) {
@@ -130,9 +135,9 @@ public class Empleado {
             interesesBase[2] = "dormir";
             interesesBase[3] = "cantar";
             interesesBase[4] = "jugar";
+            interesesAux = interesesBase;
         }
         
-
-        return interesesBase;
+        return interesesAux;
     }
 }

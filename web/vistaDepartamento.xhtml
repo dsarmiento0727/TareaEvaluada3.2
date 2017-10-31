@@ -17,7 +17,7 @@
                         <p:inputText id="txtNombre" value="#{beanDepartamento.d.nombre}" required="true" requiredMessage="Ingrese el Nombre del departamento" />
                         <br/><br/>
                         <p:outputLabel for="txtCanti" value="Cantidad de Empleados"/>
-                        <p:spinner id="txtCanti" value="#{beanDepartamento.d.nombre}" required="true" requiredMessage="Ingrese la cantidad de empleado"/>
+                        <p:spinner id="txtCanti" value="#{beanDepartamento.d.cantidadEmpleados}" required="true" requiredMessage="Ingrese la cantidad de empleado"/>
                         <br/><br/>
                         <h:panelGroup>
                             <p:commandButton value="Insertar" actionListener="#{beanDepartamento.insertar()}" update="@form"/>

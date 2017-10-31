@@ -6,6 +6,7 @@
 package com.beans;
 
 import com.dao.DaoEmpleado;
+import com.modelo.Departamento;
 import com.modelo.Empleado;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,6 +27,16 @@ public class BeanEmpleado implements Serializable{
     private Empleado em= new Empleado();
     private Empleado selEm= new Empleado();
     private List<Empleado> lista= new ArrayList<>();
+    private List<Departamento> listad = new ArrayList<>();
+
+    public List<Departamento> getListad() {
+        return listad;
+    }
+
+    public void setListad(List<Departamento> listad) {
+        this.listad = listad;
+    }
+    
 
     public DaoEmpleado getDe() {
         return de;
@@ -61,6 +72,7 @@ public class BeanEmpleado implements Serializable{
     
     public BeanEmpleado() throws Exception{
         lista=de.listarEmpleados();
+        listad = de.listarDepartamentos();
     }
     public void select(){
         em=selEm;
