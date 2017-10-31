@@ -10,6 +10,8 @@ import com.modelo.Departamento;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -19,7 +21,8 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "beanDepartamento")
 @ViewScoped
-public class BeanDepartamento implements Serializable{
+public class BeanDepartamento implements Serializable {
+
     private Departamento d = new Departamento();
     private Departamento selDepto = new Departamento();
     private DaoDepartamento ddp = new DaoDepartamento();
@@ -56,7 +59,6 @@ public class BeanDepartamento implements Serializable{
     public void setLista(List<Departamento> lista) {
         this.lista = lista;
     }
-    
 
     /**
      * Creates a new instance of BeanDepartamento
@@ -64,9 +66,15 @@ public class BeanDepartamento implements Serializable{
     public BeanDepartamento() throws Exception {
         lista = ddp.listarDepartamentos();
     }
-    
-    public void select()
-    {
+
+    public void select() {
         d = selDepto;
     }
+
+    public void limpiar(){
+        d = new Departamento();
+        selDepto = new Departamento();
+    }
+
+
 }
