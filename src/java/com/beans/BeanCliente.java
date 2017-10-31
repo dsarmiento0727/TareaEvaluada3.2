@@ -97,6 +97,18 @@ public class BeanCliente implements Serializable {
             throw e;
         }
     }
+     public void eliminar() throws Exception
+    {
+        try {
+            dc.eliminarCliente(selCli);
+            FacesContext context= FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Cliente Eliminado Correctamente"));
+        } catch (Exception e) {
+             FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
+            throw e;
+        }
+    }
     public void limpiar(){
      selCli = new Cliente();
      cli = new Cliente();

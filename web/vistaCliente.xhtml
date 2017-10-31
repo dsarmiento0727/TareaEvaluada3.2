@@ -28,7 +28,8 @@
 
                         <h:panelGroup>
                              <p:commandButton value="Insertar"  actionListener="#{beanCliente.insertar()}" update="@form" />
-                             <p:commandButton value="Modificar"  actionListener="#{beanCliente.modificar()}" update="@form" />
+                             <p:commandButton value="Modificar"  onclick="PF('modificar').show();" type="button" />
+                             <p:commandButton value="Eliminar" onclick="PF('eliminar').show();" type="button"
                            
                             <p:commandButton value="Limpiar" actionListener="#{beanCliente.limpiar()}" update="@form" />
                         </h:panelGroup>
@@ -51,6 +52,8 @@
 
 
                         </p:dataTable>
+                        
+                        <p:dialog header="Confirmacion"
                     </h:form>
                 </h:panelGrid>
             </ui:define>
