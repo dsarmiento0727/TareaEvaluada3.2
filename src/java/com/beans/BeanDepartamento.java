@@ -96,6 +96,8 @@ public class BeanDepartamento {
             ddp.eliminarDepartamento(d);
             FacesContext context= FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Departamento Eliminado Correctamente"));
+            lista=ddp.listarDepartamentos();
+            limpiar();
         } catch (Exception e) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
