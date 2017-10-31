@@ -19,7 +19,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author hp
+ * @author Karen
  */
 @ViewScoped
 @Named(value = "beanDepartamento")
