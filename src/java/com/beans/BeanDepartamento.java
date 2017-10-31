@@ -27,6 +27,14 @@ public class BeanDepartamento {
     private Departamento d= new Departamento();
     private Departamento selDepa = new Departamento();
     private List<Departamento> lista = new ArrayList<>();
+
+    public Departamento getSelDepa() {
+        return selDepa;
+    }
+
+    public void setSelDepa(Departamento selDepa) {
+        this.selDepa = selDepa;
+    }
    
     public DaoDepartamento getDdp() {
         return ddp;
